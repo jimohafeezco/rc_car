@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
 
-  <param name="robot_description" command="$(find xacro)/xacro.py '$(find rc_car)/urdf/rc_car.xacro'"/>
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find mrobot)/urdf/mrobot.xacro'"/>
 
   <!-- send fake joint values -->
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
@@ -13,9 +13,9 @@
 
   <!-- <node pkg="tf" type="static_transform_publisher" name="camera_base" args="0 0.0 0.0 -1.58 0.0 -1.58  kinect_sensor_link camera_depth 25" /> -->
   <!-- Show in Rviz   -->
-  <!-- <arg name="rvizconfig" default="$(find rc_car)/config/rc_car.rviz" />
+  <!-- <arg name="rvizconfig" default="$(find mrobot)/config/mrobot.rviz" />
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" /> -->
-  <!-- <arg name="rvizconfig" default="$(find rc_car)/config/rc_car.rviz" /> -->
+  <!-- <arg name="rvizconfig" default="$(find mrobot)/config/mrobot.rviz" /> -->
   <node name="rviz" pkg="rviz" type="rviz" />
 
 </launch>
