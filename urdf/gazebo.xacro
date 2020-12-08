@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<robot name="mrobot" xmlns:xacro="https://www.ros.org/wiki/xacro" >
+
+
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+	<xacro:property name="cam_px" value="-0.087" />
+	<xacro:property name="cam_py" value="-0.0125" />
+	<xacro:property name="cam_pz" value="0.2870" />
+	<xacro:property name="cam_or" value="0" />
+	<xacro:property name="cam_op" value="0" />
+	<xacro:property name="cam_oy" value="0" />
+
+<gazebo reference="link_chassis">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+  <gazebo reference="link_left_wheel">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="link_right_wheel">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <!-- <gazebo reference="kinect_sensor_link">
+    <material>Gazebo/Red</material>
+  </gazebo>
+   <gazebo reference="imu_sensor_link">
+    <material>Gazebo/Yellow</material>
+  </gazebo> 
+  <gazebo reference="camera_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>  -->
+  <gazebo>
+    <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>20</updateRate>
+      <leftJoint>joint_left_wheel</leftJoint>
+      <rightJoint>joint_right_wheel</rightJoint>
+      <wheelSeparation>0.4</wheelSeparation>
+      <wheelDiameter>0.2</wheelDiameter>
+      <torque>0.1</torque>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <robotBaseFrame>link_chassis</robotBaseFrame>
+    </plugin>
+  </gazebo>
+
+  </robot>
